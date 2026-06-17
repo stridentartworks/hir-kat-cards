@@ -1,4 +1,13 @@
-const Characters = [
+export type AlphabetType = 'hiragana' | 'katakana' | 'both';
+  
+export interface CharacterType {
+  hiragana: string;
+  katakana: string;
+  sound: string;
+  index: number;
+}
+
+const Characters: CharacterType[] = [
   {
     hiragana: 'あ',
     katakana: 'ア',
