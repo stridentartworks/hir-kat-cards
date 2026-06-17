@@ -20,6 +20,16 @@
   font-size: xx-large;
 }
 
+.character-card.bg-hiragana {
+  background-color: #ffd54f;
+  border-color: #ffb300;
+}
+
+.character-card.bg-katakana {
+  background-color: #81c784;
+  border-color: #4caf50;
+}
+
 .character-list {
   display: inline-grid;
   grid-template-columns: repeat(5, 140px);
