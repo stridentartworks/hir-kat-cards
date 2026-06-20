@@ -21,15 +21,21 @@ const App = () => {
   const toggleAlphabet = (alphabet: AlphabetType) => {
     setSelectedAlphabet(alphabet)
     setResetCount((prev) => prev + 1);
-    const randomizedList = shuffleArray(Characters);
-    setDisplayedCharacters(randomizedList);
+
+    if (alphabet === 'both' || alphabet === 'romanji') {
+      setDisplayedCharacters([...Characters]);
+    } else {
+      const randomizedList = shuffleArray(Characters);
+      setDisplayedCharacters(randomizedList);
+    }
   }
 
   return (
     <>
-      <div>
+      <div className='mode-buttons'>
          <button className='alphabet-button' onClick={() => toggleAlphabet('hiragana')}>Hiragana</button>
          <button className='alphabet-button' onClick={() => toggleAlphabet('katakana')}>Katakana</button>
+         <button className='alphabet-button' onClick={() => toggleAlphabet('romanji')}>Romanji</button>
          <button className='alphabet-button' onClick={() => toggleAlphabet('both')}>Both</button>
       </div>
       <div className='character-list'>

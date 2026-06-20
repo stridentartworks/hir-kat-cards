@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import type { CharacterType, AlphabetType } from '../assets/Characters';
 
 interface CharacterProps {
@@ -14,35 +14,45 @@ const Character = ({ character, activeAlphabet }: CharacterProps) => {
     setIsFlipped(!isFlipped);
   }
 
-  let displayedContent;
+  const bothText: ReactNode = <span>{character.hiragana}<br/>{character.katakana}</span>;
+
+  // Default is 'both'
+  let frontText: string | ReactNode = bothText;
+  let backText: string | ReactNode = character.romanji;
+  let themeClass: string = 'theme-both';
 
   if (activeAlphabet === 'hiragana') {
-    displayedContent = isFlipped ? <span>{character.katakana}</span> : <span>{character.hiragana}</span>
+    frontText = character.hiragana;
+    backText = character.katakana;
+    themeClass = 'theme-hiragana';
   } else if (activeAlphabet === 'katakana') {
-    displayedContent = isFlipped ? <span>{character.hiragana}</span> : <span>{character.katakana}</span>
-  } else {
-    displayedContent = 
-      <>
-        <span>{character.hiragana}</span>
-        <span>{character.katakana}</span>
-      </>
-  }
-
-  let cardClass = 'character-card'; 
-  
-  if (activeAlphabet === 'hiragana') {
-    cardClass += ' bg-hiragana' 
-  } else if (activeAlphabet === 'katakana') {
-    cardClass += ' bg-katakana'
-  }
-
-  if (isFlipped) {
-    cardClass = activeAlphabet === 'hiragana' ? 'character-card bg-katakana' : 'character-card bg-hiragana';
-  }
+    frontText = character.katakana;
+    backText = character.hiragana;
+    themeClass = 'theme-katakana';
+  } else if (activeAlphabet === 'romanji') {
+    frontText = character.romanji;
+    backText = bothText;
+    themeClass = 'theme-romanji';
+  };
   
   return (
-    <div className={cardClass} title={character.sound} onClick={flipCard}>
-      {displayedContent}
+    
+    <div className={`flashcard-scene ${themeClass}`} title={character.romanji} onClick={flipCard}>
+      
+      {/* Inner card container that physically rotates */}
+      <div className={`flashcard-inner ${isFlipped ? 'is-flipped' : ''}`}>
+        
+        {/* Front face */}
+        <div className="flashcard-face flashcard-front">
+          <span>{frontText}</span>
+        </div>
+
+        {/* Back face */}
+        <div className="flashcard-face flashcard-back">
+          <span>{backText}</span>
+        </div>
+
+      </div>
     </div>
   );
 };
