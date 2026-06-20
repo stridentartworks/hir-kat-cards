@@ -6,7 +6,7 @@ interface CharacterProps {
   activeAlphabet: AlphabetType
 }
 
-const Character = ({ character, activeAlphabet }: CharacterProps) => {
+const CharacterCard = ({ character, activeAlphabet }: CharacterProps) => {
 
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -57,4 +57,4 @@ const Character = ({ character, activeAlphabet }: CharacterProps) => {
   );
 };
 
-export default Character;
+export default CharacterCard;

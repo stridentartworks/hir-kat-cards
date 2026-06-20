@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Character from './components/Character'
+import CharacterCard from './components/CharacterCard'
 import Characters, { type AlphabetType, type CharacterType } from './assets/Characters'
 import './App.css'
 
@@ -40,7 +40,7 @@ const App = () => {
       </div>
       <div className='character-list'>
         {displayedCharacters.map((character) => (
-          <Character 
+          <CharacterCard 
             character={character}
             key={`${character.index}-${selectedAlphabet}-${resetCount}`}
             activeAlphabet={selectedAlphabet}

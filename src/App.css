@@ -1,3 +1,4 @@
+/* Defined inline in App.tsx for mintilify site */
 .mode-buttons {
   display: flex;
   justify-content: space-between; 
@@ -7,18 +8,7 @@
   margin: 0 auto; 
 }
 
-.alphabet-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  padding: 16px;
-  width: 100px;
-  font-size: large;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
+/* Defined inline in App.tsx for mintilify site */
 .character-list {
   display: grid;
   grid-template-columns: repeat(5, 140px);
@@ -31,15 +21,27 @@
   justify-items: center; 
 }
 
+.alphabet-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  border: 2px solid #9a9797;
+  padding: 16px;
+  width: 100px;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 /* Main scene container providing 3D perspective */
 .flashcard-scene {
   width: 120px;
   height: 150px;
-  perspective: 1000px; /* Crucial for 3D depth! Higher = flatter, Lower = more dramatic */
-  cursor: pointer;
+  perspective: 1000px;
 }
 
-/* Container that actually handles the 180-degree rotation */
+/* Container that handles the 180-degree rotation */
 .flashcard-inner {
   position: relative;
   width: 100%;
@@ -79,22 +81,11 @@
   transform: rotateY(180deg);
 }
 
-/* ==========================================================================
-   THEME STYLING
-   ========================================================================== */
-
-/* Hiragana: Yellow front, Green back when flipped */
 .theme-hiragana .flashcard-front { background-color: #f9d86d; border-color: #c97eee; color: #034303; font-size: xxx-large; }
 .theme-hiragana .flashcard-back { background-color: #90af4c; border-color: #c97eee; color: #8d0518; font-size: xxx-large; }
-
-/* Katakana: Green front, Yellow back when flipped */
 .theme-katakana .flashcard-front { background-color: #81c784; border-color: #c97eee; color: #8d0518; font-size: xxx-large; }
-.theme-katakana .flashcard-back { background-color: #f9d86d; border-color: #c97eee; font-size: xxx-large; }
-
-/* Both */
-.theme-both .flashcard-front { background-color: #dbd9ca; border-color: #d18d4e; color: #034303; font-size: xx-large; }
-.theme-both .flashcard-back { background-color: #bef4f3; border-color: #2c7378; color: #8d0518; font-size: xx-large; }
-
-/* Romanji */
+.theme-katakana .flashcard-back { background-color: #f9d86d; border-color: #c97eee; color: #034303; font-size: xxx-large; }
 .theme-romanji .flashcard-front { background-color: #bef4f3; border-color: #2c7378;color: #8d0518; font-size: xx-large; }
 .theme-romanji .flashcard-back { background-color: #dbd9ca; border-color: #d18d4e; color: #034303;  font-size: xx-large; }
+.theme-both .flashcard-front { background-color: #dbd9ca; border-color: #d18d4e; color: #034303; font-size: xx-large; }
+.theme-both .flashcard-back { background-color: #bef4f3; border-color: #2c7378; color: #8d0518; font-size: xx-large; }
